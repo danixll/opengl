@@ -1,4 +1,5 @@
 #include "game.h"
+#include "input.h"
 
 Game::Game() {
 	glfwInit();
@@ -26,6 +27,11 @@ Game::Game() {
 
 void Game::run() {
 	while (!glfwWindowShouldClose(window)) {
+		processInput(window);
+
+		glClearColor(0.25f, 0.33f, 0.37f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
