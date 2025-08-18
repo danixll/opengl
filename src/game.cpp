@@ -1,5 +1,6 @@
 #include "game.h"
-#include "input.h"
+
+void processInput(GLFWwindow* window);
 
 Game::Game() {
 	glfwInit();

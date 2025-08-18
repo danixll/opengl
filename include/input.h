@@ -1,1 +1,0 @@
-void processInput(GLFWwindow* window);
