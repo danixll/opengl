@@ -1,9 +1,9 @@
-#include "shader.h"
+#include "rendering.h"
 
 class Cube {
 private:
-	unsigned int VBO, VAO, EBO;
 	Shader* defaultShader;
+	ObjectBuffer* Buffers;
 public:
 	Cube();
 	void draw();

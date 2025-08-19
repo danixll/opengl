@@ -1,7 +1,7 @@
 #include <glad/glad.h>
 #include <fstream>
 #include <sstream>
-#include "shader.h"
+#include "rendering.h"
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath) {
 	std::string vertexCode;
@@ -56,4 +56,26 @@ void Shader::setInt(const std::string& name, int value) const {
 }
 void Shader::setFloat(const std::string& name, float value) const {
 	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+}
+
+ObjectBuffer::ObjectBuffer(std::vector<float> vertices, std::vector<unsigned int> indices) {
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &EBO);
+
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
+}
+
+void ObjectBuffer::bind() {
+	glBindVertexArray(VAO);
+}
+
+void ObjectBuffer::unbind() {
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 }
