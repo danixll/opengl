@@ -1,7 +1,9 @@
+#include "shader.h"
+
 class Cube {
 private:
 	unsigned int VBO, VAO, EBO;
-	unsigned int shaderProgram;
+	Shader* defaultShader;
 public:
 	Cube();
 	void draw();
