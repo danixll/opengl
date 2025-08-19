@@ -2,11 +2,11 @@
 #include <GLFW/glfw3.h>
 
 class Game {
-public:
+private:
 	GLFWmonitor* monitor;
 	const GLFWvidmode* mode;
 	GLFWwindow* window;
-
+public:
 	Game();
 	void run();
 	~Game();

@@ -1,4 +1,5 @@
 #include "game.h"
+#include "objects.h"
 
 void processInput(GLFWwindow* window);
 
@@ -27,11 +28,15 @@ Game::Game() {
 }
 
 void Game::run() {
+	Cube defaultCube;
+
 	while (!glfwWindowShouldClose(window)) {
 		processInput(window);
 
 		glClearColor(0.25f, 0.33f, 0.37f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		defaultCube.draw();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
